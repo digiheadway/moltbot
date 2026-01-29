@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
+# Ensure pnpm is accessible even if not in the PATH
+command -v pnpm >/dev/null 2>&1 || alias pnpm="npx pnpm"
+shopt -s expand_aliases
 
 on_error() {
   echo "A2UI bundling failed. Re-run with: pnpm canvas:a2ui:bundle" >&2
